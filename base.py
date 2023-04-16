@@ -14,7 +14,7 @@ from tkinter import filedialog
 
 import matplotlib
 matplotlib.rcParams['savefig.dpi'] = 1000
-matplotlib.rcParams['savefig.frameon'] = False
+#matplotlib.rcParams['savefig.frameon'] = False
 matplotlib.rcParams['savefig.bbox'] = 'tight'
 matplotlib.rcParams["toolbar"] = "toolmanager"
 
