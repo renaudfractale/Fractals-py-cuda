@@ -9,11 +9,11 @@ with open('test-2000.npy', 'rb') as f:
     tab_pos = np.load(f)
     nbRange = np.load(f)
 
-
+""""
 histo= np.zeros(len(nbRange+2),np.int32)
 for i in nbRange:
     histo[tab_int[i]]+=1
-
+"""
 
 fig = plt.figure()
 ax = fig.add_subplot()
