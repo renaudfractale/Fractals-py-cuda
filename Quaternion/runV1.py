@@ -15,7 +15,9 @@ c = np.exp(b)
 print(a)
 print(b)
 print(c)
-
+print(q1)
+print(q1.w)
+"""
 pas = 0.005
 
 xmin = -1.5
@@ -74,3 +76,4 @@ with open('test-'+str(nbIter)+'.npy', 'wb') as f:
     np.save(f, tab_pos)
     np.save(f,nbRange)
     np.save(f,nbIter)
+"""
