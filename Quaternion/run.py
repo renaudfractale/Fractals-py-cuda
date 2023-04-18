@@ -16,24 +16,24 @@ print(a)
 print(b)
 print(c)
 
-pas = 0.01
+pas = 0.005
 
-xmin = -0.7
-xmax = 0.7
+xmin = -1.5
+xmax = 0
 xpas = pas
 xrange = np.arange(xmin, xmax, xpas)
 
-ymin = -0.7
-ymax = 0.7
+ymin = -1.5
+ymax = 0
 ypas = pas
 yrange = np.arange(ymin, ymax, ypas)
 
-zmin = -0.7
-zmax = 0.7
+zmin = -1.5
+zmax = 0
 zpas = pas
 zrange = np.arange(zmin, zmax, zpas)
 
-nbIter = 2000
+nbIter = 250
 iterRange = range(0, nbIter)
 
 nbrange = xrange.size * yrange.size * zrange.size
@@ -55,23 +55,17 @@ for x in xrange:
             tab_int[i] = -1
             tab_pos[i] = [x, y, z]
 
-qMaster = np.quaternion(0, 0.02, -0.02, 0.01)
+qMaster = np.quaternion(0.5, 0.02, -0.2, 0.01)
 Rmax = 8.0
 Rmax2 = Rmax*Rmax
-for iter in iterRange:
-    print(str(iter)+" sur "+str(nbIter))
-    for i in nbRange:
-        """print(tab_int[i])
-        print(tab_int[i]+1)
-        print(iter)
+for i in nbRange:
+    print(str(i)+" sur "+str(nbrange))
+    for iter in iterRange:
         tab_q[i] = tab_q[i]*tab_q[i]+qMaster
-        print(tab_q[i].x*tab_q[i].x+tab_q[i].w*tab_q[i].w+tab_q[i].y*tab_q[i].y+tab_q[i].z*tab_q[i].z)
-        print(tab_q[i].x*tab_q[i].x+tab_q[i].w*tab_q[i].w+tab_q[i].y*tab_q[i].y+tab_q[i].z*tab_q[i].z<Rmax2)
-        break"""
-        if (tab_int[i]+1 == iter):
-            tab_q[i] = tab_q[i]*tab_q[i]+qMaster
-            if (tab_q[i].x*tab_q[i].x+tab_q[i].w*tab_q[i].w+tab_q[i].y*tab_q[i].y+tab_q[i].z*tab_q[i].z < Rmax2):
-                tab_int[i] = iter
+        tab_int[i] = iter
+        if (tab_q[i].x*tab_q[i].x+tab_q[i].w*tab_q[i].w+tab_q[i].y*tab_q[i].y+tab_q[i].z*tab_q[i].z > Rmax2):
+            break
+               
 
 print(tab_int)
 
@@ -79,3 +73,4 @@ with open('test-'+str(nbIter)+'.npy', 'wb') as f:
     np.save(f, tab_int)
     np.save(f, tab_pos)
     np.save(f,nbRange)
+    np.save(f,nbIter)
