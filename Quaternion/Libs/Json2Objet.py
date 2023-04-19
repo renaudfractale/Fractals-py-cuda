@@ -1,4 +1,5 @@
 import json
 
 def Json2Objet(jsonTxt):
-    return json.loads(jsonTxt)
+    print(jsonTxt)
+    return json.loads(str(jsonTxt))
