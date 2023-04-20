@@ -1,1 +1,0 @@
-. .\new-virtual\Scripts\Activate.ps1
