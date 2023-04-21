@@ -2,11 +2,6 @@ import numpy as np
 import quaternion
 import Libs
 
-
-
-
-
-
 nbPoint = 1000
 xmin = -4.0
 xmax = 4.0
@@ -16,7 +11,7 @@ zmin = -4.0
 zmax = 4.0
 iterMax = 250
 qMaster = np.quaternion(0.5, 0.02, -0.2, 0.01)
-Rmax = 8
+Rmax = 4
 RmaxPower = pow(Rmax, 2)
 axeT_Name = "z"
 axeT_Value = 0.5
