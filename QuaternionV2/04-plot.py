@@ -7,7 +7,7 @@ from matplotlib.ticker import PercentFormatter
 import Libs
 
 
-PathFile= "2023-04-22_07-37-35.0873602.npz"
+PathFile= "2023-04-22_07-37-35.0873602-Filter.npz"
 
 Data = Libs.OpenFileNpz(PathFile)
 
@@ -17,8 +17,8 @@ JsonString = Data["jsonText"]
 Parameter = Libs.Json2Objet(JsonString)
 
 
-lenPlotEnd = 50
-lenPlotStart = 30
+lenPlotEnd = 40
+lenPlotStart = 39
 
 
 
@@ -89,7 +89,7 @@ for i in Arange:
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
-ax.scatter(X, Y, Z,color=C)
+ax.scatter(X, Y, Z,color=C,marker=".")
 
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
