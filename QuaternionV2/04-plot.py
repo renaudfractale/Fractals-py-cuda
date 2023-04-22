@@ -7,7 +7,7 @@ from matplotlib.ticker import PercentFormatter
 import Libs
 
 
-PathFile= "2023-04-19_18-41-34.0262410-Filter.npz"
+PathFile= "2023-04-22_07-37-35.0873602.npz"
 
 Data = Libs.OpenFileNpz(PathFile)
 

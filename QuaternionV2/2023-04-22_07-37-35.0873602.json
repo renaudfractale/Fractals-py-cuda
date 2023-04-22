@@ -1,0 +1,21 @@
+{
+    "Rmax": 4,
+    "RmaxPower": 16,
+    "axeT_Name": "z",
+    "axeT_Value": 0.5,
+    "iterMax": 250,
+    "nbPoint": 1000,
+    "pasX": 2.0,
+    "pasY": 2.0,
+    "pasZ": 2.0,
+    "qMasterW": 0.5,
+    "qMasterX": 0.02,
+    "qMasterY": -0.2,
+    "qMasterZ": 0.01,
+    "xmax": 1.0,
+    "xmin": -1.0,
+    "ymax": 1.0,
+    "ymin": -1.0,
+    "zmax": 1.0,
+    "zmin": -1.0
+}
