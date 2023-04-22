@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 from matplotlib.ticker import PercentFormatter
 import Libs
-import copy
 
-PathFile= "2023-04-19_18-41-34.0262410.npz"
+
+PathFile= "2023-04-19_18-41-34.0262410-Filter.npz"
 
 Data = Libs.OpenFileNpz(PathFile)
 
@@ -17,7 +17,7 @@ JsonString = Data["jsonText"]
 Parameter = Libs.Json2Objet(JsonString)
 
 
-lenPlotEnd = 35
+lenPlotEnd = 50
 lenPlotStart = 30
 
 
@@ -31,7 +31,7 @@ print(Temp.size)
 X = np.zeros(Temp.size,np.float16)
 Y = np.zeros(Temp.size,np.float16)
 Z = np.zeros(Temp.size,np.float16)
-C = np.zeros(Temp.size,np.int16)
+C = np.zeros((Temp.size,4),np.float16)
 
 tab_Index= np.arange(0,tab_Source.size)
 #intX = np.trunc(tab_Index / (Parameter["nbPoint"]*Parameter["nbPoint"]))
@@ -50,6 +50,16 @@ tab_Index= np.arange(0,tab_Source.size)
 #print(min(intZ))
 #print("*******************")
 Arange = range(lenPlotStart,lenPlotEnd+1)
+Plage = range(lenPlotStart,lenPlotEnd+1)
+Plagemin=min(Plage)
+Plagemax=max(Plage)
+PlageEcart=max(Plage)-min(Plage)
+
+R = np.linspace(0,255)
+norm= plt.Normalize(0,255)
+color=plt.cm.hsv(norm(R))
+print(color.size)
+
 index = -1
 for i in Arange:
     filter_arr = tab_Source ==  i
@@ -61,25 +71,25 @@ for i in Arange:
     print("size = "+str(tab_IndexF.size))    
     #print(Xint)
     #print(Yint)
-    print(Zint)
-    XFloat = np.float16(Xint)*Parameter["pasX"]/float(Parameter["nbPoint"]-1)
-    YFloat = np.float16(Yint)*Parameter["pasY"]/float(Parameter["nbPoint"]-1)
-    ZFloat = np.float16(Zint)*Parameter["pasZ"]/float(Parameter["nbPoint"]-1)
+    #print(Zint)
+    XFloat = (np.float16(Xint)*Parameter["pasX"]/float(Parameter["nbPoint"]-1))+Parameter["xmin"]
+    YFloat = (np.float16(Yint)*Parameter["pasY"]/float(Parameter["nbPoint"]-1))+Parameter["ymin"]
+    ZFloat = (np.float16(Zint)*Parameter["pasZ"]/float(Parameter["nbPoint"]-1))+Parameter["zmin"]
     #print(XFloat)
     #print(YFloat)
     #print(ZFloat)
     #print(max(ZFloat))
-    #print(min(ZFloat))
+    #print(min(ZFloat))    
     for k in np.arange(0,tab_IndexF.size):
         index+=1
         X[index] =  XFloat[k]
         Y[index] =  YFloat[k]
         Z[index] =  ZFloat[k]
-        C[index] = i
+        C[index] =  color[int(float(i-Plagemin)/float(PlageEcart)*((color.size/4)-1))]
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
-ax.scatter(X, Y, Z,C,C)
+ax.scatter(X, Y, Z,color=C)
 
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')

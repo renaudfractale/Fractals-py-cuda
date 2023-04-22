@@ -3,12 +3,12 @@ import quaternion
 import Libs
 
 nbPoint = 1000
-xmin = -4.0
-xmax = 4.0
-ymin = -4.0
-ymax = 4.0
-zmin = -4.0
-zmax = 4.0
+xmin = -1.0
+xmax = 1.0
+ymin = -1.0
+ymax = 1.0
+zmin = -1.0
+zmax = 1.0
 iterMax = 250
 qMaster = np.quaternion(0.5, 0.02, -0.2, 0.01)
 Rmax = 4
