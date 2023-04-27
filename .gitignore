@@ -6,5 +6,6 @@ __pycache__/base.cpython-37.pyc
 __pycache__/*
 */__pycache__/*
 */*/__pycache__/*
-QuaternionV1/new-virtual/*
-QuaternionV2/new-virtual/*
+*/new-virtual/*
+QuaternionV1-cpu/new-virtual/*
+QuaternionV2-cpu/new-virtual/*
